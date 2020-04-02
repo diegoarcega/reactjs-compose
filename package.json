@@ -1,0 +1,29 @@
+{
+  "name": "reactjs-compose",
+  "version": "1.0.0",
+  "description": "Compose components following Facebook's composition best practice",
+  "author": "Diego Arcega <diegoarcega@gmail.com>",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "compose",
+    "components",
+    "react",
+    "composition"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/diegoarcega/reactjs-compose.git"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.29",
+    "react": "^16.13.1"
+  }
+}
