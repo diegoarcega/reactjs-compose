@@ -12,7 +12,9 @@
     "composition"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "eslint './src/**/*.{ts,tsx}'",
+    "test": "echo test"
   },
   "repository": {
     "type": "git",
@@ -23,7 +25,16 @@
     "react": "^16.13.1"
   },
   "devDependencies": {
-    "@types/react": "^16.9.29",
-    "react": "^16.13.1"
+    "@types/react": "^16.9.32",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "prettier": "^2.0.2",
+    "react": "^16.13.1",
+    "typescript": "^3.8.3"
   }
 }

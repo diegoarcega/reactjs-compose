@@ -4,9 +4,38 @@
     "target": "es6",
     "declaration": true,
     "esModuleInterop": true,
-    "outDir": "./dist"
+    "outDir": "dist/",
+    "rootDir": "src/",
+    "sourceMap": false,
+    "moduleResolution": "node",
+    "strict": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "baseUrl": "./",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "forceConsistentCasingInFileNames": true,
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "jsRules": {},
+  "rulesDirectory": [],
+  "rules": {
+    "max-line-length": {
+        "options": [120]
+    },
+    "prettier/prettier": ["error", { "singleQuote": true }]
   },
   "include": [
-    "src/**/*"
-  ]
+    "src/**/*",
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+  ],
 }
