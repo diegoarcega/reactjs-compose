@@ -1,6 +1,6 @@
 {
   "name": "reactjs-compose",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Compose components following Facebook's composition best practices",
   "author": "Diego Arcega <diegoarcega@gmail.com>",
   "main": "dist/index.js",
@@ -12,7 +12,7 @@
     "composition"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "npx tsc",
     "lint": "eslint './src/**/*.{ts,tsx}'",
     "test": "echo test"
   },

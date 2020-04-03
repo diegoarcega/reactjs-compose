@@ -54,7 +54,7 @@ interface Props {
 function Component0(props: Props) {
   return (
     <div style={{ padding: '10px', background: 'yellow', width: '500px' }}>
-      <span>Wrapper Component 0 (ex: Context Provider, Reusable UI template)</span>
+      <span>Wrapper Component ZERO (ex: Context Provider, Reusable UI template)</span>
       <div>{props.text}{props.children}</div>
     </div>
   )
@@ -64,7 +64,7 @@ function Component0(props: Props) {
 function Component1(props: Props) {
   return (
     <div style={{ padding: '10px', background: 'orange', width: '400px' }}>
-      <span>Wrapper Component 1 (ex: Context Provider, Reusable UI template)</span>
+      <span>Wrapper Component ONE (ex: Context Provider, Reusable UI template)</span>
       <div>{props.text}{props.children}</div>
     </div>
   )
@@ -74,7 +74,7 @@ function Component1(props: Props) {
 function Component2(props: Props) {
   return (
     <div style={{ padding: '10px', background: 'lightgreen', width: '300px' }}>
-      <span>Wrapper Component 2 (ex: Context Provider, Reusable UI template)</span>
+      <span>Wrapper Component TWO (ex: Context Provider, Reusable UI template)</span>
       <div>{props.text}{props.children}</div>
     </div>
   )
@@ -88,13 +88,56 @@ function Home(props: Props) {
   )
 }
 
+// Looks Bad
 function Routes() {
   return (<Router>
     <Switch>
         <Route path="/"><Root /></Route>
-        <Route path="/home">
-            <Compose components={[Component0, [Component1, { text: 'comp one' }], [Component3, { text: 'comp one' }]]}>
-              <Home text="text" />
+        <Route path="/home" render={routerProps => (
+            <Component0>
+              <Component1>
+                <Component2 text="comp two">
+                  <Home text="text" {...routerProps}/>
+                </Component2>
+              </Component1>
+            </Component0>
+        )}>
+        </Route>
+        <Route path="/users"><Users /></Route>
+        <Route path="/contact"><Contact /></Route>
+    </Switch>
+</Router>)
+}
+
+// Looks Good
+function Routes() {
+  return (<Router>
+    <Switch>
+        <Route path="/"><Root /></Route>
+        <Route path="/home" render={routerProps => (
+          <Compose components={[Component0, Component1, [Component2, { text: 'comp two' }]]}>
+            <Home text="text" {...routerProps}/>
+          </Compose>
+        )} >
+        </Route>
+        <Route path="/users"><Users /></Route>
+        <Route path="/contact"><Contact /></Route>
+    </Switch>
+</Router>)
+}
+
+// Looks Good too
+const Home = [Component0, Component1, [Component2, { text: 'comp two' }]]
+
+function Routes() {
+  return (<Router>
+    <Switch>
+        <Route path="/"><Root /></Route>
+        <Route path="/home" render={routerProps => (
+            <Compose components={Home}>
+              <Home text="text" {...routerProps} />
+            </Compose>
+        )}>
         </Route>
         <Route path="/users"><Users /></Route>
         <Route path="/contact"><Contact /></Route>
