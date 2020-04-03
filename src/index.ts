@@ -1,11 +1,7 @@
 import React from 'react'
 
-interface ComponentsType {
-  component: React.ElementType
-  props?:  { [name: string]: any }
-}
 interface Props {
-  components: ComponentsType[]
+  components: React.ElementType[]
   children?: any
 }
 
@@ -15,7 +11,11 @@ function Compose({ components, children }: Props) {
   const loopStart = components.length - 1
 
   for (let i = loopStart; i >= 0; i--) {
-    ComponentWithWrappers = React.createElement(components[i].component, components[i].props, ComponentWithWrappers)
+    if (Array.isArray(components[i])) {
+      ComponentWithWrappers = React.createElement(components[i][0], components[i][1], ComponentWithWrappers)
+    } else {
+      ComponentWithWrappers = React.createElement(components[i], null, ComponentWithWrappers)
+    }
   }
 
   return ComponentWithWrappers

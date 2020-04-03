@@ -88,32 +88,12 @@ function Home(props: Props) {
   )
 }
 
-// Providers that will be wrap the Home component
-const HomeProviders = [{
-    component: Component0,
-    props: {
-      text: 'prop zero',
-    },
-  }, {
-    component: Component1,
-    props: {
-      text: 'prop one',
-    },
-  },
-  {
-    component: Component2,
-    props: {
-      text: 'prop two',
-    },
-  }
-]
-
 function Routes() {
   return (<Router>
     <Switch>
         <Route path="/"><Root /></Route>
         <Route path="/home">
-            <Compose components={HomeProviders}>
+            <Compose components={[Component0, [Component1, { text: 'comp one' }], [Component3, { text: 'comp one' }]]}>
               <Home text="text" />
         </Route>
         <Route path="/users"><Users /></Route>

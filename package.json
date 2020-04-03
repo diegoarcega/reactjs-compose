@@ -1,7 +1,7 @@
 {
   "name": "reactjs-compose",
-  "version": "1.0.0",
-  "description": "Compose components following Facebook's composition best practice",
+  "version": "1.0.1",
+  "description": "Compose components following Facebook's composition best practices",
   "author": "Diego Arcega <diegoarcega@gmail.com>",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
