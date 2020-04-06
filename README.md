@@ -127,14 +127,14 @@ function Routes() {
 }
 
 // Looks Good too
-const Home = [Component0, Component1, [Component2, { text: 'comp two' }]]
+const Providers = [Component0, Component1, [Component2, { text: 'comp two' }]]
 
 function Routes() {
   return (<Router>
     <Switch>
         <Route path="/"><Root /></Route>
         <Route path="/home" render={routerProps => (
-            <Compose components={Home}>
+            <Compose components={Providers}>
               <Home text="text" {...routerProps} />
             </Compose>
         )}>

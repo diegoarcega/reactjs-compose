@@ -1,21 +1,23 @@
 import React from 'react'
 
+type ComponentType = React.ElementType | [React.ElementType, { [name: string]: any }]
 interface Props {
-  components: React.ElementType[]
+  components: Array<ComponentType>
   children?: any
 }
 
-function Compose({ components, children }: Props) {
+function Compose({ components, children }: Props): React.ElementType {
   let ComponentWithWrappers = children
 
   const loopStart = components.length - 1
 
   for (let i = loopStart; i >= 0; i--) {
-    if (Array.isArray(components[i])) {
-      // @ts-ignore
-      ComponentWithWrappers = React.createElement(components[i][0], components[i][1], ComponentWithWrappers)
+    const mycomponent: ComponentType = components[i]
+
+    if (Array.isArray(mycomponent)) {
+      ComponentWithWrappers = React.createElement(mycomponent[0], mycomponent[1], ComponentWithWrappers)
     } else {
-      ComponentWithWrappers = React.createElement(components[i], null, ComponentWithWrappers)
+      ComponentWithWrappers = React.createElement(mycomponent, null, ComponentWithWrappers)
     }
   }
 
